@@ -14,6 +14,11 @@ const serviceRoutes = require('./routes/serviceRoutes');
 dotenv.config();
 const app = express();
 const server = http.createServer(app);
+app.use(cors({
+    origin: 'https://social-media-380d7.web.app', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 const io = socketIo(server, {
     cors: {
         origin: 'https://social-media-380d7.web.app', // Ensure this matches your frontend's URL
