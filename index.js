@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: 'http://localhost:4200', // Ensure this matches your frontend's URL
+        origin: 'https://social-media-380d7.web.app', // Ensure this matches your frontend's URL
         methods: ['GET', 'POST', 'PUT', 'DELETE']
     }
 });
