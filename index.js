@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 app.use(cors({
-    origin: 'https://social-media-380d7.web.app', // Replace with your frontend URL
+    origin: 'https://social-media-380d7.web.app/', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
