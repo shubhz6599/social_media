@@ -10,7 +10,6 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require('path');
 const serviceRoutes = require('./routes/serviceRoutes');
-const fs = require('fs');
 
 dotenv.config();
 const app = express();
@@ -23,7 +22,7 @@ const io = socketIo(server, {
     }
 });
 
-app.use('/uploads', express.static('/mnt/data/uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors({
     origin: '*', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -32,10 +31,7 @@ app.use(cors({
 app.use(express.json());
 
 connectDb();
-const uploadDir = '/mnt/data/uploads';
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
+
 // Handle socket connections
 io.on('connection', (socket) => {
     console.log('New client connected: ' + socket.id);
