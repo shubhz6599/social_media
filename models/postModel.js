@@ -4,10 +4,7 @@ const postSchema = new mongoose.Schema({
     title: String,
     content: String,
     category: String,
-    image: {
-        data: Buffer, // Store the image as binary data
-        contentType: String // Store the content type (e.g., 'image/png')
-    },
+    image: String,  // Field for image URL
     username: String,
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'Users' },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
