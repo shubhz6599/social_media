@@ -64,6 +64,15 @@ app.use('/post', postRoutes);
 app.use('/friends', friendRequestRoutes);
 app.use('/messages', messageRoutes);
 app.use('/services', serviceRoutes);
+
+app.get('/', async (req, res) => {
+    try {
+
+        res.status(200).json('user');
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching user profile', error });
+    }
+});
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
     console.log('Server Started At ' + PORT);
