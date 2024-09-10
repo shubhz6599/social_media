@@ -6,10 +6,11 @@ const router = express.Router();
 // Configure Multer for image upload
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Destination folder for image uploads
+        // Use Railway volume path for storing images
+        cb(null, '/mnt/data/uploads'); // Mount path for Railway volume
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + '-' + file.originalname); // Filename format
+        cb(null, Date.now() + '-' + file.originalname); // Set filename format
     }
 });
 
